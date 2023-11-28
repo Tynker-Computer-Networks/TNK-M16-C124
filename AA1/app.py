@@ -28,7 +28,6 @@ def callback(event):
     if (event.data):
         text = event.data
 
-
 # Add listener to listen realtime updates
 ref = db.reference('/keyboardData')
 ref.listen(callback)

