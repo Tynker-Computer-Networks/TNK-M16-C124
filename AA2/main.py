@@ -38,8 +38,6 @@ def send_post_req():
         print("Couldn't complete request!")
 
 # Define highlight_emails function to highlight emails with asterisks ("*")
-
-
 def highlight_emails(text):
     words = text.split(" ")
     modified_words = []
