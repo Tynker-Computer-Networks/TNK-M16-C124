@@ -5,7 +5,7 @@ import json
 import threading
 
 
-text = ''
+text = 'Welcome to keylogger'
 
 
 localhost = "127.0.0.1"
